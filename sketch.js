@@ -5,7 +5,7 @@ var speed = 9;
 var position;
 var velocity;
 var numberOfBalls = 30;
-var size = 10;
+var mass = 10;
 var temp;
 var Elastic = 1;
 
@@ -15,10 +15,10 @@ var Pressure;
 var Temperature;
 function myTimer() {
   Area =  windowWidth * (windowHeight-110);
-  Density = numberOfBalls * size / Area;
+  Density = numberOfBalls * mass / Area;
   Temperature = 0;
   for(var s = 0; s<numberOfBalls; s++){
-    Temperature += 0.5 * size / numberOfBalls * velocity[s].mag() * velocity[s].mag();
+    Temperature += 0.5 * mass / numberOfBalls * velocity[s].mag() * velocity[s].mag();
   }
   Pressure = numberOfBalls * Temperature / Area;
 
@@ -45,25 +45,25 @@ function draw() {
 
 function move(){
   for(var k = 0; k<numberOfBalls; k=k+1){
-    ellipse(position[k].x, position[k].y, size, size);
+    ellipse(position[k].x, position[k].y, mass, mass);
     if(position[k].y>=height){
       velocity[k].y*=-1;
-      position[k] = createVector(position[k].x, height-size/2-1);
+      position[k] = createVector(position[k].x, height-mass/2-1);
     }
-    if(position[k].y<=size/2){
+    if(position[k].y<=mass/2){
       velocity[k].y*=-1;
-      position[k] = createVector(position[k].x, size/2+1);
+      position[k] = createVector(position[k].x, mass/2+1);
     }
-    if(position[k].x<=size/2){
+    if(position[k].x<=mass/2){
       velocity[k].x*=-1;
-      position[k] = createVector(size/2+1, position[k].y);
+      position[k] = createVector(mass/2+1, position[k].y);
     }
     if(position[k].x>=width){
       velocity[k].x*=-1;
-      position[k] = createVector(width-size/2-1, position[k].y);
+      position[k] = createVector(width-mass/2-1, position[k].y);
     }
       for(var j = 0; j<numberOfBalls; j=j+1){
-        if(j!=k && size >= sqrt(abs(sq(position[k].y-position[j].y)) + abs(sq(position[k].x-position[j].x)) ) ){
+        if(j!=k && mass >= sqrt(abs(sq(position[k].y-position[j].y)) + abs(sq(position[k].x-position[j].x)) ) ){
             temp = velocity[k];
             velocity[k].x = velocity[j].x*Elastic + (velocity[j].x+temp.x)/2*(1-Elastic);
             velocity[k].y = velocity[j].y*Elastic + (velocity[j].y+temp.y)/2*(1-Elastic);
@@ -91,6 +91,6 @@ function Reset(){
 function Go(){
   speed = document.getElementById("speed").value;
   numberOfBalls = document.getElementById("numberOfBalls").value;
-  size = document.getElementById("size").value;
+  mass = document.getElementById("mass").value;
   Elastic = document.getElementById("Elastic").value/100;
 }
