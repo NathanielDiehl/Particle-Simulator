@@ -6,7 +6,12 @@ var position;
 var velocity;
 var numberOfBalls = 30;
 var mass = 10;
-var temp;
+
+var temp1x;
+var temp1y;
+var temp2x;
+var temp2y;
+
 var Elastic = 1;
 
 var Area;
@@ -64,11 +69,15 @@ function move(){
     }
       for(var j = 0; j<numberOfBalls; j=j+1){
         if(j!=k && mass >= sqrt(abs(sq(position[k].y-position[j].y)) + abs(sq(position[k].x-position[j].x)) ) ){
-            temp = velocity[k];
-            velocity[k].x = velocity[j].x*Elastic + (velocity[j].x+temp.x)/2*(1-Elastic);
-            velocity[k].y = velocity[j].y*Elastic + (velocity[j].y+temp.y)/2*(1-Elastic);
-            velocity[j].x = temp.x*Elastic + (velocity[j].x+temp.x)/2*(1-Elastic);
-            velocity[j].y = temp.y*Elastic + (velocity[j].y+temp.y)/2*(1-Elastic);
+            temp1x = velocity[k].x;
+            temp1y = velocity[k].y;
+            temp2x = velocity[j].x;
+            temp2y = velocity[j].y;
+
+            velocity[k].x = temp2x*Elastic + (temp2x+temp1x)/2*(1-Elastic);
+            velocity[k].y = temp2y*Elastic + (temp2y+temp1y)/2*(1-Elastic);
+            velocity[j].x = temp1x*Elastic + (temp2x+temp1x)/2*(1-Elastic);
+            velocity[j].y = temp1y*Elastic + (temp2y+temp1y)/2*(1-Elastic);
 
             position[k].add(velocity[k]);
             position[j].add(velocity[j]);  
