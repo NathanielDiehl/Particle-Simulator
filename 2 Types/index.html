@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head>
+    <script src="p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+    <div class="particle_properties">
+      <h5 class="prompt">Speed</h5>
+      <input class="input" id="speed1" value=10 /> <!--type="text"-->
+      <h5 class="prompt">Number</h5>
+      <input class="input" id="numberOfBalls1" value=30 />
+      <h5 class="prompt">Mass</h5>
+      <input class="input"  id="mass1" value=15 />
+      <h5 class="prompt">Elasticity</h5>
+      <input class="input"  id="Elastic" value=100 />
+      <h5 class="prompt">%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+      <button id="Reset" onclick="Go1()">Go</button>
+    </div>
+
+    <div class="particle_properties">
+      <h5 class="prompt">Speed</h5>
+      <input class="input" id="speed2" value=10 /> <!--type="text"-->
+      <h5 class="prompt">Number</h5>
+      <input class="input" id="numberOfBalls2" value=30 />
+      <h5 class="prompt">Mass</h5>
+      <input class="input"  id="mass2" value=15 />
+      <h5 class="prompt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+      <button id="Reset" onclick="Go2()">Go</button>
+    </div>
+
+
+    <div class="data">
+      <h5 class="prompt" id="Area"></h5>
+      <h5 class="prompt">&nbsp;&nbsp;&nbsp;</h5>
+      <h5 class="prompt" id="Density"></h5>
+      <h5 class="prompt">&nbsp;&nbsp;&nbsp;</h5>
+      <h5 class="prompt" id="Pressure"></h5>
+      <h5 class="prompt">&nbsp;&nbsp;&nbsp;</h5>
+      <h5 class="prompt" id="Temperature"></h5>
+      <h5 class="prompt">&nbsp;&nbsp;&nbsp;</h5>
+      <button id="Reset" onclick="Reset()">Reset</button>
+    </div>
+
+    <script class="sketch" src="sketch.js"></script>
+
+</body></html>
